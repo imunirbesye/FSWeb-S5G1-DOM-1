@@ -39,7 +39,37 @@ const siteContent = { // BU NESNEYİ DEĞİŞTİRMEYİN
   },
 };
 
-console.log('Proje açıldı!')
+console.log('Proje açıldı!');
 
 
 /* Kodlar Buradan aşağıya */
+ 
+let menuLink = document.querySelectorAll("nav > a");
+for(let i = 0; i < menuLink.length; i++){
+  menuLink[i].textContent = siteContent["nav"]["nav-item-"+(i+1)];
+  menuLink[i].setAttribute("class","italic");
+}
+document.querySelector("button").textContent = "Başlayın";
+document.querySelector("img.logo").src = siteContent.images["logo-img"];
+document.querySelector("img#cta-img").src = siteContent.images["cta-img"];
+document.querySelector("div.cta-text > h1").textContent = siteContent["cta"]["h1"]; 
+
+let textBaslik = document.querySelectorAll("div.text-content > h4");
+let textIcerikler = document.querySelectorAll("div.text-content > p");
+
+for(let i = 0; i < 5; i++) {
+  textBaslik[i].textContent = Object.values(siteContent["ana-içerik"])[i*2];
+  textIcerikler[i].textContent = Object.values(siteContent["ana-içerik"])[i*2+1];
+}
+
+document.querySelector("img.middle-img").src = siteContent.images["accent-img"];
+
+document.querySelector(".contact > h4").textContent = siteContent.iletisim["iletişim-h4"];
+let iletisimP = document.querySelectorAll(".contact p");
+iletisimP[0].textContent = siteContent.iletisim["adres"];
+iletisimP[1].textContent = siteContent.iletisim["telefon"];
+iletisimP[2].textContent = siteContent.iletisim["email"];
+
+let footerA = document.querySelector("footer a");
+footerA.textContent = siteContent.footer.copyright;
+footerA.classList.add("bold");
